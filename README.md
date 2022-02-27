@@ -13,7 +13,8 @@
 ### Association
 - has_many :points
 - has_many :posts
-- has_many :communities, through: :user_communities
+- has_many :community_users
+- has_many :communities, through: :community_users
 
 
 #postsテーブル
@@ -24,19 +25,34 @@
 
 ### Association
 - belongs_to :user
+- belongs_to :community
 - has_many :comments
 - has_one :point
+
 
 
 #communitiessテーブル
 | Column         | Type       | Option                         |
 | -------------- | ---------- | ------------------------------ |
-| diet           | references | null: false, foreign_key: true |
-| training           | references | null: false, foreign_key: true |
-| study           | references | null: false, foreign_key: true |
+| diet           | string     | null: false                    |  
+| training          | string     | null: false                    |  
+| study           | string     | null: false                    |  
 
 ### Association
-- has_many :users, through: :user_communities
+- has_many :users, through: :community_users
+- has_many :community_users
+- has_many :posts
+
+
+#community_usersテーブル
+| Column         | Type       | Option                         |
+| -------------- | ---------- | ------------------------------ |
+| user            | references | null: false, foreign_key: true |
+| community            | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :community
 
 
 #pointsテーブル
