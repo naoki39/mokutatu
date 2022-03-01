@@ -14,5 +14,10 @@ class User < ApplicationRecord
     validates :to_do, format: { with: /(?=.*\d)/ }
   end
 
+  validates :genre_id, numericality: { other_than: 1 , message: "can't be blank"}
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :genre
+
   has_one_attached :image     
 end

@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2022_03_01_032744) do
     t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.integer "genre_id", null: false
     t.string "goal", null: false
     t.string "second_goal", null: false
     t.string "to_do", null: false

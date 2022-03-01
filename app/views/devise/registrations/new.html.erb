@@ -32,6 +32,12 @@
   </div>
 
   <div class="field">
+    <%= f.label :community %><br />
+    <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"genre-select"}) %>
+  </div>
+
+
+  <div class="field">
     <%= f.label :goal %><br />
     <%= f.text_field :goal, autofocus: true, autocomplete: "goal" %>
   </div>
