@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+#coding: utf-8
+
+Community.create(:name => "ダイエット")
+Community.create(:name => "トレーニング")
+Community.create(:name => "資格勉強")

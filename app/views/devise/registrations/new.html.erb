@@ -31,11 +31,6 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :community %><br />
-    <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"genre-select"}) %>
-  </div>
-
 
   <div class="field">
     <%= f.label :goal %><br />
