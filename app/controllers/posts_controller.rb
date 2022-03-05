@@ -3,7 +3,8 @@ before_action :authenticate_user!
 before_action :set_post, only: [:new, :create]
 
   def index
-   @posts = Post.all
+   set_post
+   @posts = Post.where(community_id: @community.id)
   end
 
   def new
