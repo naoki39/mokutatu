@@ -14,7 +14,6 @@ before_action :set_post, only: [:new, :create]
   def create
     set_post
     @post = Post.new(post_params)
-    binding.pry
     if @post.save
       redirect_to community_posts_path(@community.id)
     else

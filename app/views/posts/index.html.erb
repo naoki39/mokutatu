@@ -1,6 +1,8 @@
+
 <%= link_to "新規投稿", new_community_post_path %>
 <% @posts.each do |post| %>
-  <%= post.user.image %>
+  <%= image_tag post.user.image.variant(resize: '500x500'),class: "user_icon" %>
   <%= post.user.nickname %>
   <%= post.text %>
+  <%= l post.created_at %>
 <% end %>
