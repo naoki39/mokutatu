@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
-  
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:image, :nickname, :genre_id, :goal, :second_goal, :to_do])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :goal, :second_goal, :to_do, :image])
   end
 end
