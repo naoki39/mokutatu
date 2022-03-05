@@ -11,3 +11,4 @@
 Community.create(:name => 'ダイエット')
 Community.create(:name => 'トレーニング')
 Community.create(:name => '資格勉強')
+
