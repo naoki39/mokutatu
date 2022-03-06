@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :communities, only: :index do
     resources :posts, only: [:index, :new, :create]
   end
+  resources :users, only: :show
 end

@@ -1,0 +1,13 @@
+<div class = "header" >
+    <%#= render pertial: "header", locals: {community: @community} %>
+</div>
+
+<div class="wrapper">
+  <div class= "side_bar">
+    <%= render "posts/side_bar" %>
+  </div>
+
+  <div class ="main_posts">
+    <%= render pertial: "posts/main", collection: @posts %>
+  </div>
+</div>

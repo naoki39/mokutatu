@@ -22,9 +22,6 @@ before_action :set_post, only: [:new, :create]
     end
   end
 
-  def show
-  end
-
   private
 
   def set_post

@@ -1,8 +1,7 @@
 
-  <div class = "header" >
-    <%= render "header" %>
-    <%= link_to "新規投稿", new_community_post_path %>
-  </div>
+ <div class = "header" >
+  <%= render "header" %>
+</div>
 
 <div class="wrapper">
   <div class= "side_bar">
@@ -10,12 +9,7 @@
   </div>
 
   <div class ="main_posts">
-    <% @posts.each do |post| %>
-      <%= image_tag post.user.image.variant(resize: '500x500'),class: "user_icon" %>
-      <%= post.user.nickname %>
-      <%= post.text %>
-        <%= l post.created_at %>
-    <% end %>
+    <%= render pertial: "main", collection: @posts %>
   </div>
 
 </div>
