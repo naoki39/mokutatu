@@ -1,15 +1,20 @@
 
  <div class = "header" >
-  <%= render "header" %>
+  <%= @community.name  %>
+  <%= link_to "新規投稿", new_community_post_path %>
 </div>
 
 <div class="wrapper">
   <div class= "side_bar">
-    <%= render "side_bar" %>
+    <%= link_to image_tag(current_user.image.variant(resize: '500x500'),class: "mypage_user_icon"), user_path(current_user.id) %>
+        <%= current_user.nickname %>
+        <%= current_user.goal %>
+        <%= current_user.second_goal %>
+        <%= current_user.to_do %>
   </div>
 
   <div class ="main_posts">
-    <%= render pertial: "main", collection: @posts %>
+    <%= render partial: "main", collection: @posts, as: "post" %>
   </div>
 
 </div>

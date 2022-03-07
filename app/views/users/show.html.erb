@@ -1,13 +1,18 @@
 <div class = "header" >
-    <%#= render pertial: "header", locals: {community: @community} %>
+  <%= "#{@user.nickname}さんのマイページ"  %>
 </div>
+
 
 <div class="wrapper">
   <div class= "side_bar">
-    <%= render "posts/side_bar" %>
+    <%= link_to image_tag(@user.image.variant(resize: '500x500'),class: "mypage_user_icon"), user_path(@user.id) %>
+        <%= @user.nickname %>
+        <%= @user.goal %>
+        <%= @user.second_goal %>
+        <%= @user.to_do %>
   </div>
 
   <div class ="main_posts">
-    <%= render pertial: "posts/main", collection: @posts %>
+    <%= render partial: "posts/main", collection: @posts, as: "post" %>
   </div>
 </div>
