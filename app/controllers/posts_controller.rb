@@ -22,6 +22,7 @@ before_action :set_post, only: [:new, :create]
     end
   end
 
+
   private
 
   def set_post
