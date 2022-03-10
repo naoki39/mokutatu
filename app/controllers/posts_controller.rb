@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
 before_action :authenticate_user!
-before_action :set_post, only: [:new, :create]
+before_action :set_post, only: [:new, :create, :show, :destroy, :like, :unlike]
 
   def index
-   @posts = Post.all
+   set_post
+   @posts = Post.where(community_id: @community.id)
   end
 
   def new
@@ -14,7 +15,6 @@ before_action :set_post, only: [:new, :create]
   def create
     set_post
     @post = Post.new(post_params)
-    binding.pry
     if @post.save
       redirect_to community_posts_path(@community.id)
     else
@@ -23,6 +23,33 @@ before_action :set_post, only: [:new, :create]
   end
 
   def show
+    set_post#ユーザーがどのコミュニティーを開いているかが格納
+    @post = Post.find(params[:id])#ユーザーがどの投稿を選択しているかが格納
+    @comment = Comment.new#コメントを保存するための空のインスタンスを生成
+    @comments = @post.comments.includes(:user)#投稿に対して紐づいている全てのコメントと、コメントをしたユーザー情報が格納
+  end
+
+  def destroy
+    set_post
+    @post = Post.find(params[:id])
+    if current_user.id == @post.user.id
+      @post.destroy 
+      redirect_to 
+    end
+  end
+
+  def like
+    set_post
+    @post = Post.find(params[:id])
+    current_user.voted_post << @post
+    render 'vote.js.erb'
+  end
+
+  def unlike
+    set_post
+    @post = Post.find(params[:id])
+    current_user.voted_post.destroy(@post)
+    render 'vote.js.erb'
   end
 
   private

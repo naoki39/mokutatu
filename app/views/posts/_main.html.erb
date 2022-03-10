@@ -1,0 +1,15 @@
+ <%= link_to image_tag(post.user.image.variant(resize: '500x500'), class: "posts_user_icon"), user_path(post.user.id) %>
+ <%= link_to community_post_path(post.community.id,post.id) do %>
+     <%= post.user.nickname %>
+      <%= post.text %>
+     <%= l post.created_at %>
+<% end %>
+<div>
+  <% if current_user && current_user.votable_for?(post) %>
+    <%= link_to "いいね",like_community_post_path(post.community.id, post.id),method: :patch, remote: true %>
+  <% elsif current_user && current_user.deletable_for?(post) %>
+    <%= link_to "いいねを解除",unlike_community_post_path(post.community.id, post.id),method: :patch, remote: true %>
+  <% end %>
+</div>
+
+  

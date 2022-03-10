@@ -2,7 +2,8 @@
 
 <%= link_to "ダイエット", community_posts_path(@community1.id) %>
 <%= link_to "トレーニング",  community_posts_path(@community2.id) %>
-<%= link_to "資格勉強",  community_posts_path(@community3.id) %>]
+<%= link_to "資格勉強",  community_posts_path(@community3.id) %>
+<%= link_to "創作",  community_posts_path(@community4.id) %>
 
 <% if user_signed_in? %>
   <%= link_to current_user.nickname, "#" %>
