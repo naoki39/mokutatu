@@ -14,7 +14,7 @@
         <%= current_user.to_do %>
   </div>
 
-  <div class ="main_posts">
+  <div class ="main_posts", id="vote-box">
     <%= render partial: "main", collection: @posts, as: "post" %>
   </div>
 

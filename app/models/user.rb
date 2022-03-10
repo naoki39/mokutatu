@@ -19,4 +19,14 @@ class User < ApplicationRecord
   has_many :communities, through: :community_users
   has_many :posts, dependent: :destroy
   has_many :comments
+  has_many :votes,dependent: :destroy
+  has_many :voted_post, through: :votes, source: :post
+
+  def votable_for?(post)#いいねボタンを押せるか判断
+    post && post.user != self && !votes.exists?(post_id: post.id)
+  end
+
+  def deletable_for?(post)#いいねボタンを解除できるか判断
+    post && post.user != self && votes.exists?(post_id: post.id)
+  end
 end

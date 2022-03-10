@@ -5,9 +5,10 @@
  <% if user_signed_in? && current_user.id == @post.user.id %>
   <%= link_to "投稿の削除",  community_post_path(@community.id, @post.id), method: :delete %>
  <% end %>
- <%= form_with(model: [@community,@post,@comment], local: true) do |form| %>
-    <%= form.text_area :text, placeholder: "コメントする" %>
-    <%= form.submit "送信する" %>
+ <%= form_with(model: [@community,@post,@comment], local: true) do |f| %>
+  <%= render 'shared/error_messages', model: f.object %>
+    <%= f.text_area :text, placeholder: "コメントする" %>
+    <%= f.submit "送信する" %>
   <% end %>
 
   <div class="comments">

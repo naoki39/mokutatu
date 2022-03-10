@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to:"communities#index"
   resources :communities, only: :index do
     resources :posts, only: [:index, :new, :create, :destroy, :show] do
+      patch "like", "unlike", on: :member
       resources :comments, only: [:create, :destroy]
     end
   end

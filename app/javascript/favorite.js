@@ -1,6 +1,6 @@
 function post (){
-  const favorites = document.getElementsByClassName("favorite");
-  favorites.addEventListener("click", () => {
+  const votes = document.getElementsByClassName("");
+  votes.addEventListener("click", () => {
     console.log("いいね");
   });
 };

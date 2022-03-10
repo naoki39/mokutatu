@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 before_action :authenticate_user!
-before_action :set_post, only: [:new, :create, :show, :destroy]
+before_action :set_post, only: [:new, :create, :show, :destroy, :like, :unlike]
 
   def index
    set_post
@@ -34,8 +34,22 @@ before_action :set_post, only: [:new, :create, :show, :destroy]
     @post = Post.find(params[:id])
     if current_user.id == @post.user.id
       @post.destroy 
-      redirect_to action: :index
+      redirect_to 
     end
+  end
+
+  def like
+    set_post
+    @post = Post.find(params[:id])
+    current_user.voted_post << @post
+    render 'vote.js.erb'
+  end
+
+  def unlike
+    set_post
+    @post = Post.find(params[:id])
+    current_user.voted_post.destroy(@post)
+    render 'vote.js.erb'
   end
 
   private
